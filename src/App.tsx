@@ -2,9 +2,10 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import LikeButton from './components/LikeButton';
-import MouserTracker from './components/MouseTracker';
+import useMousePostion from './hooks/useMousePosition';
 
 function App() {
+  const position = useMousePostion()
   return (
     <div className="App">
       <header className="App-header">
@@ -12,7 +13,9 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <MouserTracker />
+        <p>
+            X: {position.x},Y: {position.y}
+        </p>
         <LikeButton />
         <a
           className="App-link"
