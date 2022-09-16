@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import LikeButton from './components/LikeButton';
 import useMousePostion from './hooks/useMousePosition';
 import useUrlLoader from './hooks/useUrlLoader';
+import DogShow from './components/DogShow';
+import DogShowTodo from './components/DogShowTodo';
 
 interface IShowResult {
   message: string;
@@ -41,6 +43,12 @@ function App() {
       <ThemeContext.Provider value={themes.dark}>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <Suspense fallback={<h1>Loading Dog image</h1>}>
+            <DogShow />
+          </Suspense>
+          <Suspense fallback={<h1>Loading Todo</h1>}>
+            <DogShowTodo />
+          </Suspense>
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
